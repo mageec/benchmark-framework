@@ -1,0 +1,45 @@
+tests:
+    x86: [Speed_Test]
+    arm: [Energy_Test]
+
+programs:
+    - {
+        name: 2dfir,
+        archs: [x86, arm]
+      }
+    - {
+        name: blowfish,
+        archs: [x86, arm]
+      }
+    - {
+        name: crc32,
+        archs: [x86, arm]
+      }
+    - {
+        name: cubic,
+        archs: [x86, arm]
+      }
+    - {
+        name: dijkstra,
+        archs: [x86, arm]
+      }
+    - {
+        name: fdct,
+        archs: [x86, arm]
+      }
+    - {
+        name: float_matmult,
+        archs: [x86, arm]
+      }
+    - {
+        name: int_matmult,
+        archs: [x86, arm]
+      }
+    - {
+        name: rijndael,
+        archs: [x86, arm]
+      }
+    - {
+        name: sha,
+        archs: [x86, arm]
+      }
