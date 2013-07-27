@@ -6,27 +6,27 @@ tests on a set of benchmarks, optionally for different architectures
 and/or build conditions.
 
 
-# Installation #
-## Prerequisites ##
+## Installation ##
+### Prerequisites ###
 python-yaml
 
 The framework is tested as working on both 2.7.5 and 3.3.2.
 
-## Setup ##
+### Setup ###
 Firstly `git clone` the framework to a folder of choice.
 Then configure the benchmarks, architectures, and tests by editing `config.yml`.
 
 Note: The framework is currently configured to run the benchmarks on the host
 (x86) machine and an ARM board (via gdb and st-link).
 The ARM architecture has such different behaviour that a separate 'Architecture'
-class had to e written for it. This can be seen in `arch.py`.
+class had to be written for it. This can be seen in `arch.py`.
 
-# Usage #
+## Usage ##
 Simply run the `compare.py` script in the directory that contains the
 directories of all of the benchmark programs.
 
 
-# Quirks #
+## Quirks ##
 Each benchmark must reside in a folder that is named the same as the benchmark.
 eg. The 'blowfish' benchmark should reside in the 'blowfish' folder.
 
@@ -37,7 +37,7 @@ The produced binaries should be named `\<arch\>_\<benchmark_name\>`.
 eg. An x86 binary for 'blowfish' should be called `x86_blowfish`.
 
 
-# TODO #
+## TODO ##
 Remove calls to logger._write so we could potentially replace the logger with
 one that writes to a database.
 
