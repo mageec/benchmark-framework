@@ -10,7 +10,7 @@ and/or build conditions.
 ### Prerequisites ###
 python-yaml
 
-The framework is tested as working on both 2.7.5 and 3.3.2.
+The framework is tested as working on both python 2.7.5 and python 3.3.2.
 
 ### Setup ###
 Firstly `git clone` the framework to a folder of choice.
@@ -30,10 +30,10 @@ directories of all of the benchmark programs.
 Each benchmark must reside in a folder that is named the same as the benchmark.
 eg. The 'blowfish' benchmark should reside in the 'blowfish' folder.
 
-The binaries for each architecture should be produced with `make \<arch\>_` in the
+The binaries for each architecture should be produced with `make <arch>_` in the
 folder of the benchmark. This behaviour can be changed in `arch.py`.
 
-The produced binaries should be named `\<arch\>_\<benchmark_name\>`.
+The produced binaries should be named `<arch>_<benchmark_name>`.
 eg. An x86 binary for 'blowfish' should be called `x86_blowfish`.
 
 
