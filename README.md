@@ -41,6 +41,4 @@ eg. An x86 binary for 'blowfish' should be called `x86_blowfish`.
 Remove calls to logger._write so we could potentially replace the logger with
 one that writes to a database.
 
-Make subprocess calls timeout.
-
 The tests array's in the 'tests' part of the config isn't used at the moment

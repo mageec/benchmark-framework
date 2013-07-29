@@ -1,5 +1,6 @@
 import os
 import subprocess
+import threading
 
 class Architecture(object):
     def __init__(self, name, tests):
@@ -30,9 +31,19 @@ class Architecture(object):
             return self.make_binaries(callback)
         return True
 
-#TODO: Make subprocess timeout. What if we run forever!?
     def run_program(self, program, callback):
-        return_code = subprocess.call(["./{}_{}".format(self.name, program)])
+        def target():
+            self.process = subprocess.Popen(["./{}_{}".format(self.name, program)],
+                    stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            self.process.communicate()
+
+        def terminator():
+            self.process.terminate()
+
+        def return_coder():
+            return self.process.returncode
+
+        return_code = self._safe_run(target, terminator, return_coder)
         self._handle_program_exit(return_code, callback)
         return return_code
 
@@ -47,10 +58,22 @@ class Architecture(object):
     def _handle_program_exit(self, return_code, callback):
         if (return_code == -1):
             callback(return_code, "Program did not produce correct output.")
+        elif (return_code == -2):
+            callback(return_code, "Program timed out.")
         elif (return_code != 0):
             callback(return_code, "Program did not exit correctly.")
         else:
             callback(0, "")
+
+    def _safe_run(self, target, terminator, return_code_accessor, timeout=120):
+        thread = threading.Thread(target=target)
+        thread.start()
+        thread.join(timeout)
+        if thread.is_alive():
+            terminator()
+            thread.join()
+            return -2
+        return return_code_accessor()
 
 
 class Arm(Architecture):
@@ -70,7 +93,15 @@ class Arm(Architecture):
         return return_code
 
     def _run_gdb(self, script, extra_flags=[]):
-        return subprocess.call(["arm-none-eabi-gdb", "-ex=source {}".format(script)]
-                + extra_flags + ["-ex=quit 1"],
-                stdout=open(os.devnull, 'wb'), stderr=open(os.devnull, 'wb'))
+        def target():
+            self.process = subprocess.Popen(["arm-none-eabi-gdb", "-ex=source {}".format(script)] + extra_flags + ["-ex=quit 1"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            self.process.communicate()
 
+        def terminator():
+            self.process.terminate()
+
+        def return_coder():
+            return self.process.returncode
+
+        to_return = self._safe_run(target, terminator, return_coder)
+        return to_return
