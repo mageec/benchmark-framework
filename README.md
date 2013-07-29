@@ -43,4 +43,4 @@ one that writes to a database.
 
 Make subprocess calls timeout.
 
-
+The tests array's in the 'tests' part of the config isn't used at the moment
