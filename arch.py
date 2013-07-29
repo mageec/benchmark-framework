@@ -75,6 +75,9 @@ class Architecture(object):
             return -2
         return return_code_accessor()
 
+    def __str__(self):
+        return self.name
+
 
 class Arm(Architecture):
 

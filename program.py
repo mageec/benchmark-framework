@@ -6,3 +6,6 @@ class Program(object):
     def run_tests(self, logger):
         for arch in self.archs:
             arch.run_tests(self.name, logger)
+
+    def __str__(self):
+        return self.name

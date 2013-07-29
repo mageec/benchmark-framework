@@ -1,8 +1,11 @@
+from result import Result
+from results import Results
+
 class Test(object):
     def __init__(self, arch, program):
         self.arch = arch
         self.program = program
-        self.results = []
+        self.results = Results(program, str(arch), type(self).__name__)
         self.success = False
         self.error = ""
 

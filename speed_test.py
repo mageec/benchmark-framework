@@ -1,6 +1,7 @@
 import time
 
 from test import Test
+from result import Result
 
 class Speed_Test(Test):
 
@@ -15,8 +16,9 @@ class Speed_Test(Test):
             start = time.time()
             self.arch.run_program(self.program, callback)
             if not self.success:
+                results.fail()
                 return
-            self.results.append(time.time() - start)
+            self.results.append(Result(True, time.time() - start))
 
     def log_results(self, logger):
         logger.write_test_header("Execution times for {} (in seconds)".format(self.arch.name))
