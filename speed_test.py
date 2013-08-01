@@ -16,7 +16,7 @@ class Speed_Test(Test):
             start = time.time()
             self.arch.run_program(self.program, callback)
             if not self.success:
-                results.fail()
+                self.results.fail()
                 return
             self.results.append(Result(True, time.time() - start))
 
