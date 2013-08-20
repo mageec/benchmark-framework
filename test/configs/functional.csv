@@ -1,0 +1,8 @@
+*,*,*,(everything)
+benchmark,*,*,(benchmark only)
+*,compiler,*,(compiler only)
+*,*,platform,(platform only)
+*,compiler,platform,(compiler on platform)
+benchmark,*,platform,(benchmark on platform)
+benchmark,compiler,*,(benchmark with compiler)
+benchmark,compiler,platform,(each only)

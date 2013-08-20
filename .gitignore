@@ -1,2 +1,6 @@
 *.swp
 *.pyc
+db
+log.txt
+output_results
+*.sqlite3

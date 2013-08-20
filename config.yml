@@ -1,45 +1,29 @@
-tests:
-    x86: [Speed_Test]
-    arm: [Energy_Test]
+platforms:
+    - {
+        name: arm,
+        runner_name: runners.arm,
+        gcc481: arm-none-eabi-gcc,
+        compiler_whitelist: [gcc481]
+      }
 
-programs:
+benchmarks:
     - {
-        name: 2dfir,
-        archs: [x86, arm]
+        name: 2dfir
+        # Allow any compiler
       }
+
+compilers:
     - {
-        name: blowfish,
-        archs: [x86, arm]
+        name: gcc481,
+        flags:
+            [-ftree-dominator-opts,
+             -ftree-loop-optimize,
+             -fomit-frame-pointer,
+             -fdce]
       }
-    - {
-        name: crc32,
-        archs: [x86, arm]
-      }
-    - {
-        name: cubic,
-        archs: [x86, arm]
-      }
-    - {
-        name: dijkstra,
-        archs: [x86, arm]
-      }
-    - {
-        name: fdct,
-        archs: [x86, arm]
-      }
-    - {
-        name: float_matmult,
-        archs: [x86, arm]
-      }
-    - {
-        name: int_matmult,
-        archs: [x86, arm]
-      }
-    - {
-        name: rijndael,
-        archs: [x86, arm]
-      }
-    - {
-        name: sha,
-        archs: [x86, arm]
-      }
+
+database:
+    # username:
+    # password:
+    # socket:
+    database: db/development.sqlite3

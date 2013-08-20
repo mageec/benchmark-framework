@@ -1,0 +1,34 @@
+platforms:
+    - {
+        name: platform,
+        runner_name: runner,
+        compiler: compiler_bin,
+        other_compiler: other_compiler_bin
+      }
+    - {
+        name: other_platform,
+        runner_name: other_runner,
+        compiler: compiler_bin,
+        other_compiler: other_compiler_bin
+      }
+
+benchmarks:
+    - {
+        name: benchmark
+      }
+    - {
+        name: other_benchmark
+      }
+
+compilers:
+    - {
+        name: compiler,
+        flags: [flag]
+      }
+    - {
+        name: other_compiler,
+        flags: [other]
+      }
+
+database:
+    database: db/test.sqlite3
