@@ -9,12 +9,12 @@ import results"""
 
 class GdbManager:
     def __init__(self, platforms, logger):
-        logger.log_info("gdm_manager", "Initialising GDB Manager")
+        logger.log_info("gdb_manager", "Initialising GDB Manager")
         self.logger = logger
         self.runners = {}
         for platform in platforms:
             self.runners[platform.name] = Pyro4.Proxy("PYRONAME:{}".format(platform.runner_name))
-        self.logger.log_info("gdm_manager", "Initialized GDB Manager")
+        self.logger.log_info("gdb_manager", "Initialized GDB Manager")
 
     def read_energy(self, binary_name, run):
         #TODO: Parameter checks
