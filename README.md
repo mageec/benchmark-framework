@@ -8,6 +8,7 @@ platforms.
 ## Installation ##
 ### Prerequisites ###
 python-yaml
+
 Pyro4
 
 For running the tests, 'python-mock' is also required.
@@ -24,8 +25,10 @@ It has not been tested on Python 2.x and is unlikely to work on it.
 
 ### Setup ###
 Firstly `git clone` the framework to a folder of choice.
+
 Then configure the benchmarks, architectures, and compilers by editing
 `config.yml`.
+
 Finally, configure which build flags to use by editing `config.csv`.
 
 ## Configuration ###
@@ -33,10 +36,10 @@ Finally, configure which build flags to use by editing `config.csv`.
 * platforms: An array of platform objects.
   * name: The name of the platform. This is used internally and in the database.
   * runner_name: The PYRONAME of the GDB runner for this platform.
-  * <compilers>: For each compiler you want to use with this platform, you need
+  * \<compilers\>: For each compiler you want to use with this platform, you need
     a corresponding entry that configures what compiler binary to use for this
     platform and compiler. It can be a binary name (but must be in PATH), or an
-    absolute path to a binary. <compiler> is the name of the compiler used in
+    absolute path to a binary. \<compiler\> is the name of the compiler used in
     the 'compilers' array of this file.
   * compiler_whitelist: An optional whitelist array of compilers to use. By
     default, this is every compiler with a corresponding compiler entry in this
@@ -132,6 +135,9 @@ will depend on the TODO below.
 
 Read results straight from pyenergy, instead of from the file that it creates.
 This will require changes to pyenergy.
+An extra issue until then is that pyenergy may not make a new results file for a
+new test, and therefore the results in the file could be read by the next test,
+instead of the test failing.
 
 Add support for Python 2.x. This shouldn't be too difficult for the main code,
 but the tests use quite a bit of Python3-only stuff. Using unittest2 should
@@ -139,3 +145,9 @@ help.
 
 Make an easier way to stop each GDB runner than connecting through the Python
 interpreter manually.
+
+Move from using Pyro to using GDB/MI instead.
+
+Use expect instead of python inside the gdb runners.
+
+Make programs timeout.
