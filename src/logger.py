@@ -28,8 +28,8 @@ class Logger:
     def log_erro(self, sender, msg):
         self.__log_message("ERRO", sender, msg)
 
-    def add_run(self, benchmark, compiler, platform, flags):
-        return self.dbi.add_run(benchmark, compiler, platform, flags)
+    def add_run(self, *args):
+        return self.dbi.add_run(*args)
 
     def record_results(self, results):
         #self.log_info("logger", "Adding the following results to the database:")
