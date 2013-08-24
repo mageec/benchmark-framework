@@ -35,8 +35,12 @@ class Logger:
         #self.log_info("logger", "Adding the following results to the database:")
         #self.log_info("logger", str(results))
         self.log_info("logger", "Adding results to the database")
-        self.dbi.record(results.run.id, results.results)
-        self.log_info("logger", "Finished adding results")
+        if results is None:
+            self.log_erro("logger", "Got no results.")
+            self.log_erro("logger", "Something probably went wrong with the test.")
+        else:
+            self.dbi.record(results.run.id, results.results)
+            self.log_info("logger", "Finished adding results")
 
     def __log_message(self, level, sender, msg):
         str_time = time.strftime("%Y-%m-%d %H:%M:%S")
