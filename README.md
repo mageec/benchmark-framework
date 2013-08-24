@@ -126,10 +126,6 @@ Currently the config_reader ignores these because it can't be done with the data
 structures that exist at the time of writing. It might be worth changing how
 build flags are stored in memory all together.
 
-Make all file references (and relevant module imports) relative to the location
-of the script making the reference. Currently, some file references are done
-relative to the current directory instead.
-
 Make everything threaded. (Specifically the dbi, logger, and gdb_manager). This
 will depend on the TODO below.
 

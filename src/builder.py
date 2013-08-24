@@ -56,4 +56,4 @@ class Builder:
 
         run_id = self.logger.add_run(benchmark.name, compiler, platform.name, flags)
         run_obj = run.Run(benchmark, compiler, platform, flags, run_id)
-        return self.runner.run_binary(benchmark.name, run_obj)
+        return self.runner.run_binary(os.path.join(benchmark.name, benchmark.name), run_obj)

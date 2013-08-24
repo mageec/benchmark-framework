@@ -19,15 +19,9 @@ class GdbManager:
     def read_energy(self, binary_name, run):
         #TODO: Parameter checks
         self.logger.log_info("gdb_manager", "Running {} on {}".format(binary_name, run.platform.name))
-        try:
-            os.chdir(run.benchmark.name)
-            runner = self.runners[run.platform.name]
+        runner = self.runners[run.platform.name]
 
-            results = runner.run_binary(os.path.abspath(binary_name), run)
-            os.chdir('..')
-        except OSError:
-            self.logger.log_warn("gdb_manager", "Failed to find {} directory".format(run.benchmark.name))
-            return
+        results = runner.run_binary(os.path.abspath(binary_name), run)
         self.logger.log_info("gdb_manager", "Successfully ran {} on {}".format(binary_name, str(run.platform)))
         #return results.Results(result_ary[0], result_ary[1], result_ary[2])
         return results
