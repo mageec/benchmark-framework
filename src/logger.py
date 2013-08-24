@@ -17,8 +17,7 @@ class Logger:
                 os.remove(self.log)
             except FileNotFoundError:
                 pass # We don't care if the file doesn't already exist
-        root_dir = os.path.abspath(os.path.join(__file__, '..', '..'))
-        self.dbi = dbi.DBi(os.path.join(root_dir, db))
+        self.dbi = dbi.DBi(os.path.abspath(db))
 
     def log_info(self, sender, msg):
         self.__log_message("INFO", sender, msg)
