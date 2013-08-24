@@ -79,7 +79,7 @@ Change the Pyro HMAC key in `src/gdb_manager.py` and all gdb runners in
 `src/gdb_runners`.
 Run `export PYRO_HMAC_KEY=<HMAC key>`, where `<HMAC key>` is the key you've just
 put into the GDB manager and GDB runners.
-in the same terminal, start up a Pyro4 nameserver with `python -m Pyro4.naming`.
+In the same terminal, start up a Pyro4 nameserver with `python -m Pyro4.naming`.
 
 Start up each GDB runner in the platform's relevant GDB.
 
