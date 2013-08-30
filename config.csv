@@ -1,2 +1,2 @@
-*,gcc481,arm,-std=c99 -g -T../platformcode/stm32vl_flash.ld -mcpu=cortex-m3 -mthumb -I../platformcode ../platformcode/exit.c ../platformcode/jrand.c ../platformcode/platformcode.c ../platformcode/sbrk.c
+*,gcc481,arm,-std=c99 -g -DARM -T../platformcode/stm32vl_flash.ld -mcpu=cortex-m3 -mthumb -I../platformcode ../platformcode/exit.c ../platformcode/jrand.c ../platformcode/platformcode.c ../platformcode/sbrk.c
 2dfir,gcc481,*,fir2dim.c -o 2dfir
